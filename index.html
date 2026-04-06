@@ -54,7 +54,7 @@ html, body {
   border-radius:12px;
   transform-style:preserve-3d;
   transition:opacity 1s, transform 1s;
-  background-color:rgb(254, 147, 147);
+  background-image: url('images/sb.jpg');
   margin-top: -30px;
 }
 
@@ -443,17 +443,12 @@ function startDraw() {
   for (let i = 0; i < total; i++) {
     const card = document.createElement("div");
     card.className = "card";
-    
-    // 讓旋轉中的每張卡片顯示 cardImages 數組裡的圖片
-    // 使用 i % cardImages.length 確保如果圖片不夠會循環使用
-    const imgUrl = cardImages[i % cardImages.length];
-    card.style.backgroundImage = `url('${imgUrl}')`; 
-    
+    card.style.backgroundImage = `url('${backImage}')`;
     const angle = (i / total) * 360;
     card.style.transform = `translate(-50%,-50%) rotateY(${angle}deg) translateZ(30vw)`;
     group.appendChild(card);
     cards.push(card);
-}
+  }
 
   // 2. 隨機決定要停在哪一張卡片 (0 ~ 6)
   const stopIndex = Math.floor(Math.random() * total);
